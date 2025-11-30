@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undangan Digital — Nama & Nama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#f6c37d; --muted:#9aa4b2; --glass:rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial; background: radial-gradient(1200px 600px at 10% 10%, rgba(246,195,125,0.06), transparent), linear-gradient(180deg,#071029 0%, #081423 100%); color:#e6eef6}
+    .container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+
+    .card{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:20px;padding:28px;box-shadow:0 8px 30px rgba(2,6,23,0.6);backdrop-filter:blur(6px);display:grid;grid-template-columns:1fr 380px;gap:24px}
+
+    .hero{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .hero .title{font-weight:800;font-size:28px;letter-spacing:0.6px;margin:6px 0}
+    .hero .subtitle{color:var(--muted);margin-bottom:14px}
+    .cover{height:220px;border-radius:12px;overflow:hidden;margin:14px 0;position:relative}
+    .cover img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform .8s ease}
+    .cover:hover img{transform:scale(1.06)}
+    .details{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+    .chip{background:var(--glass);padding:10px 12px;border-radius:12px;font-weight:600;font-size:14px}
+    .desc{margin-top:14px;color:var(--muted);line-height:1.6}
+
+    .side{display:flex;flex-direction:column;gap:12px}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#f3a86b);color:#082026;font-weight:700;border:none;cursor:pointer}
+    .btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(246,195,125,0.12)}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}
+
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea,select{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+
+    footer.small{font-size:13px;color:var(--muted);text-align:center;margin-top:6px}
+
+    @media(max-width:980px){.card{grid-template-columns:1fr;}.cover{height:200px}}
+
+    .fade-in{opacity:0;transform:translateY(8px);animation:enter .9s ease forwards}
+    @keyframes enter{to{opacity:1;transform:none}}
+
+    .orn{position:absolute;right:-60px;top:-60px;opacity:0.08;font-size:200px;transform:rotate(-12deg);pointer-events:none}
+
+    @media print{body{background:#fff;color:#000} .card{box-shadow:none;border:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="hero fade-in">
+        <div style="position:relative">
+          <div class="orn">♡</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <img src="nijar1.jpg" alt="avatar" style="width:72px;height:72px;border-radius:12px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.5)">
+            <div>
+              <div style="font-size:12px;color:var(--muted);font-weight:600">Dengan hormat kami mengundang</div>
+              <div class="title">Nidzar &amp; Dinda </div>
+              <div class="subtitle">Sabtu, 06 Desember 2025 — 09:00 WIB</div>
+            </div>
+          </div>
+
+          <div class="cover" id="cover-card">
+            <img src="nijar1.jpg" alt="cover image">
+          </div>
+        </div>
+
+        <div class="details">
+          <div class="chip">Lokasi: Hotel Pullman, Bandung</div>
+          <div class="chip">Mulai: 09:00 — Selesai</div>
+          <div class="chip">Dresscode: Batik / Formal</div>
+        </div>
+
+        <p class="desc">Kami sangat berharap kehadiran Bapak/Ibu/Saudara/i untuk memberikan doa restu pada acara pernikahan kami. Mohon konfirmasi kehadiran melalui tombol RSVP di samping. Terima kasih.</p>
+
+        <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+          <button class="btn" id="rsvp-btn">Reservasi Sekarang</button>
+          <button class="btn secondary" id="share-btn">Salin Link &amp; Bagikan</button>
+          <button class="btn secondary" id="print-btn">Cetak / Simpan PDF</button>
+        </div>
+
+      </div>
+
+      <aside class="side">
+        <div class="panel fade-in">
+          <h4 style="margin:0 0 8px 0">Musik &amp; Foto</h4>
+          <p style="margin:0 0 12px 0;color:var(--muted);font-size:14px"></p>
+          <audio controls id="bg-music" style="width:100%" preload="none">
+            <source src="mp31.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+
+        <div class="panel fade-in">
+          <h4 style="margin:0 0 8px 0">Konfirmasi Kehadiran</h4>
+          <form id="rsvp-form">
+            <input type="text" id="name" placeholder="Nama lengkap" required>
+            <select id="attend">
+              <option value="hadir">Hadir</option>
+              <option value="berhalangan">Berhalangan</option>
+            </select>
+            <textarea id="note" rows="3" placeholder="Pesan atau ucapan (opsional)"></textarea>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button type="submit" class="btn">Kirim</button>
+              <button type="button" class="btn secondary" id="download-btn">Download Gambar</button>
+            </div>
+          </form>
+          <div class="small" id="rsvp-msg" style="margin-top:8px"></div>
+        </div>
+
+        <div class="panel fade-in">
+          <h4 style="margin:0 0 8px 0">Opsi Lain</h4>
+          <div class="actions">
+            <button class="btn secondary" id="dark-toggle">Toggle Dark</button>
+            <button class="btn secondary" id="copy-invite">Salin Teks Undangan</button>
+          </div>
+        </div>
+
+        <div class="panel fade-in" style="text-align:center">
+          <small class="small">© 2025 Undangan Digital — Buat dengan VS Code</small>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- External libraries for download as image -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BLi9k3xv6wzqR+Gk1o1t4Jgk5q3l2hQm1gqjM1fZc+7sZsJYq4i2h4R3Z5FJ1YVQpG2b6d8/6X0Qkz6uQ3P1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    // Shortcuts to elements
+    const rsvpBtn = document.getElementById('rsvp-btn');
+    const rsvpForm = document.getElementById('rsvp-form');
+    const rsvpMsg = document.getElementById('rsvp-msg');
+    const copyInvite = document.getElementById('copy-invite');
+    const shareBtn = document.getElementById('share-btn');
+    const printBtn = document.getElementById('print-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    const darkToggle = document.getElementById('dark-toggle');
+
+    // Show form when RSVP clicked (smooth scroll)
+    rsvpBtn.addEventListener('click', ()=>{
+      rsvpForm.scrollIntoView({behavior:'smooth',block:'center'});
+      document.getElementById('name').focus();
+    });
+
+    // Handle RSVP submit (local-only: stores to localStorage)
+    rsvpForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = {name:document.getElementById('name').value, attend:document.getElementById('attend').value, note:document.getElementById('note').value, time:new Date().toISOString()};
+      let list = JSON.parse(localStorage.getItem('rsvps')||'[]'); list.push(data); localStorage.setItem('rsvps', JSON.stringify(list));
+      rsvpMsg.textContent = 'Terima kasih! Konfirmasi Anda telah tercatat.';
+      rsvpForm.reset();
+      setTimeout(()=>{ rsvpMsg.textContent=''; },4000);
+    });
+
+    // Copy invitation text
+    copyInvite.addEventListener('click', async ()=>{
+      const text = `Undangan Pernikahan — Nama & Nama\nTanggal: Sabtu, 25 April 2026\nLokasi: Gedung Serba Guna, Bandung\n
+Kami mengundang kehadiran Anda untuk memberi restu pada pernikahan kami.`;
+      await navigator.clipboard.writeText(text);
+      alert('Teks undangan disalin ke clipboard.');
+    });
+
+    // Share: salin URL (works if hosting online)
+    shareBtn.addEventListener('click', ()=>{
+      const url = location.href; navigator.clipboard.writeText(url); alert('Link undangan disalin. Bagikan ke WA/Telegram/Email.');
+    });
+
+    // Print / Save PDF
+    printBtn.addEventListener('click', ()=>{ window.print(); });
+
+    // Toggle dark (simple toggle of root colors)
+    darkToggle.addEventListener('click', ()=>{
+      document.documentElement.style.setProperty('--bg', '#ffffff');
+      document.body.style.background = '#fff';
+      document.body.style.color = '#001';
+      alert('Mode cetak/terang diaktifkan. Untuk kembali refresh halaman.');
+    });
+
+    // Download as image using html2canvas
+    downloadBtn.addEventListener('click', ()=>{
+      const el = document.querySelector('.card');
+      html2canvas(el, {scale:2, useCORS:true}).then(canvas=>{
+        const a = document.createElement('a'); a.href = canvas.toDataURL('image/png'); a.download = 'undangan.png'; a.click();
+      }).catch(err=>{console.error(err); alert('Gagal membuat gambar. Coba lagi atau gunakan fitur cetak.');});
+    });
+
+    // Simple accessibility: enable keyboard focus styling
+    document.addEventListener('keydown', (e)=>{ if(e.key==="Escape") { document.activeElement.blur(); } });
+
+    // Helpful note: show stored RSVPs count in panel
+    function updateRsvpCount(){ const list = JSON.parse(localStorage.getItem('rsvps')||'[]'); const node = document.getElementById('rsvp-msg'); if(list.length>0) node.textContent = `Terdapat ${list.length} konfirmasi tersimpan (lokal).`; }
+    updateRsvpCount();
+  </script>
+</body>
+</html>
